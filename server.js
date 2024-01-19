@@ -1,6 +1,16 @@
 const express = require('express');
 const app = express();
 const JDMX = require('./database')
+const cors = require('cors')
+
+const corsOptions ={
+    origin:'*', 
+    credentials:true,     
+    optionSuccessStatus:200,
+}
+
+ app.use(express.json())
+ app.use(cors(corsOptions))
 
 app.get("/api", (req, res) => {
     myQuery = `SELECT * FROM products`
