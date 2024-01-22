@@ -18,7 +18,7 @@ const corsOptions ={
     lastName = req.body.last_name;
     email = req.body.email;
     password = req.body.password;
-    const sql = `INSERT INTO customer ('first_name', 'last_name', 'email', 'password') Values ('${firstName}', '${lastName}', '${email}', '${[password]}')`;
+    const sql = `INSERT INTO customer ('first_name', 'last_name', 'email', 'password') Values ('${firstName}', '${lastName}', '${email}', '${password}')`;
     
     // const values = [
     //     req.body.first_name,
