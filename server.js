@@ -13,16 +13,21 @@ const corsOptions ={
  app.use(cors(corsOptions))
 
  app.post(("/signup"), (req, res) => {
-    const sql = 'INSERT INTO customer (`first_name`, `last_name`, `email`, `password`) Values (?)';
-    
-    const values = [
-        req.body.first_name,
-        req.body.last_name,
-        req.body.email,
-        req.body.password
-    ]
 
-    JDMX.query(sql, [values], (err, data) => {
+    firstName = req.body.first_name;
+    lastName = req.body.last_name;
+    email = req.body.email;
+    password = req.body.password;
+    const sql = `INSERT INTO customer ('first_name', 'last_name', 'email', 'password') Values ('${firstName}', '${lastName}', '${email}', '${[password]}')`;
+    
+    // const values = [
+    //     req.body.first_name,
+    //     req.body.last_name,
+    //     req.body.email,
+    //     req.body.password
+    // ]
+
+    JDMX.query(sql, (err, data) => {
         if(err) return res.json(err);
         return res.json(data);
     })
