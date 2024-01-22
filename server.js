@@ -12,6 +12,22 @@ const corsOptions ={
  app.use(express.json())
  app.use(cors(corsOptions))
 
+ app.post(("/signup"), (req, res) => {
+    const sql = 'INSERT INTO customer (`first_name`, `last_name`, `email`, `password`) Values (?)';
+    
+    const values = [
+        req.body.firstname,
+        req.body.lastname,
+        req.body.email,
+        req.body.password
+    ]
+
+    JDMX.query(sql, [values], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    })
+ })
+
 app.get("/api", (req, res) => {
     myQuery = `SELECT * FROM products`
 
